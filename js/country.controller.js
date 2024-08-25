@@ -2,9 +2,9 @@
 
 function onSearch(ev) {
     ev.preventDefault()
-    const term = ev.target[0].value
+    const { value } = ev.target[0]
     
-    getCountry(term)
+    getCountryByName(value)
         .then(renderCountry)
 }
 
