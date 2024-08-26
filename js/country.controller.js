@@ -29,6 +29,7 @@ function renderCountry(country) {
             <ul class="neighbor-list">
                 ${borderList}
             </ul>
+            <button class="btn-search-more" onclick="onScrollToTop()">Search more countries! 👆</button>
         </section>
 
         <section>
@@ -51,6 +52,10 @@ function onGetCountryByCode(code) {
     getCountryBy('code', code)
         .then(renderCountry)
         .then(hideLoader)
+}
+
+function onScrollToTop() {
+    window.scrollTo({ top: 0 })
 }
 
 function onRemoveCache() {
