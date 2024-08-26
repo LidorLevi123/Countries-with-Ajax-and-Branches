@@ -1,4 +1,5 @@
 @import url('./cmps/loader.css');
+@import url('./cmps/country-preview.css');
 
 * {
     box-sizing: border-box;
@@ -11,10 +12,6 @@ html {
 body {
     margin: 0;
     padding: 0;
-}
-
-.country-preview .name {
-    font-size: 2rem;
 }
 
 .app-header {
@@ -82,12 +79,20 @@ body {
 .neighbor-list {
     display: grid;
     gap: 10px;
+    list-style-type: none;
 }
 
 .neighbor-list li{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     cursor: pointer;
     width: max-content;
     color: purple;
+}
+
+.neighbor-list li img {
+    width: 30px;
 }
 
 .main-layout {

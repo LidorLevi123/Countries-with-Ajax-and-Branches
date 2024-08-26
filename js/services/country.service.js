@@ -10,6 +10,7 @@ function getCountryBy(type, term) {
     return fetch(endpoints[type])
         .then(res => res.json())
         .then(countries => countries[0])
+        .then(_refactorData)
         .then(country => _saveToCache(term, country))
         .catch(err => console.log('Could not get country', err))
 }
@@ -30,4 +31,13 @@ function _getEndpoints(term) {
         name: `https://restcountries.com/v3.1/name/${term}`,
         code: `https://restcountries.com/v3.1/alpha/${term}`
     }
+}
+
+function _refactorData(country) {
+    const prms = country.borders.map(border =>
+        fetch(`https://restcountries.com/v3.1/alpha/${border}`)
+            .then(res => res.json())
+            .then(countries => countries[0].cca2)
+    )
+    return Promise.all(prms).then(borders => ({ ...country, borders }))
 }
