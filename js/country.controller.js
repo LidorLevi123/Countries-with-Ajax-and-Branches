@@ -1,16 +1,13 @@
 'use strict'
 
-function onInit() {
-    // getCountryByName('isr')
-    //     .then(renderCountry)
-}
-
 function onSearch(ev) {
     ev.preventDefault()
     const { value } = ev.target[0]
+    showLoader()
 
     getCountryByName(value)
         .then(renderCountry)
+        .then(hideLoader)
 }
 
 function renderCountry(country) {
@@ -25,4 +22,12 @@ function renderCountry(country) {
     const elCountry = document.querySelector('.country-preview')
     elCountry.innerHTML = strHTML
     setTimeout(window.scrollTo({ top: document.body.scrollHeight }), 500)
+}
+
+function showLoader() {
+    document.querySelector('.loader').hidden = false
+}
+
+function hideLoader() {
+    document.querySelector('.loader').hidden = true
 }
