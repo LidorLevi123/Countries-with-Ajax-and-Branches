@@ -1,11 +1,5 @@
 'use strict'
 
-function onInit() {
-    getCountryBy('name', 'isr')
-        .then(renderCountry)
-        .then(hideLoader)
-}
-
 function onSearch(ev) {
     ev.preventDefault()
     showLoader()
