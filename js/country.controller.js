@@ -1,10 +1,5 @@
 'use strict'
 
-function onInit() {
-    // getCountryByName('isr')
-    //     .then(renderCountry)
-}
-
 function onSearch(ev) {
     ev.preventDefault()
     const { value } = ev.target[0]
@@ -25,4 +20,9 @@ function renderCountry(country) {
     const elCountry = document.querySelector('.country-preview')
     elCountry.innerHTML = strHTML
     setTimeout(window.scrollTo({ top: document.body.scrollHeight }), 500)
+}
+
+function onRemoveCache() {
+    if(!confirm('Are you sure?')) return
+    removeCache()
 }
