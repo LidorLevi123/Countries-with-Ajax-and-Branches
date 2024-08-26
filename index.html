@@ -4,17 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>Document</title>
 </head>
 
-<body>
-    <form onsubmit="onSearch(event)">
-        <input type="text" placeholder="Search a country">
-        <button>Submit</button>
-    </form>
+<body class="main-layout" onload="onInit()">
 
-    <pre class="country-preview"></pre>
+    <header class="app-header full">
+        <img src="img/globe.png" alt="">
+        <section class="hero">
+            <h1>Discover the World, 
+                <br> 
+                One Country at a Time
+            </h1>
+    
+            <form onsubmit="onSearch(event)">
+                <input type="text" placeholder="Search a country">
+                <button>Submit</button>
+            </form>
+        </section>
+    </header>
+
+    <article class="country-preview"></article>
 
     <script src="js/services/country.service.js"></script>
     <script src="js/country.controller.js"></script>
