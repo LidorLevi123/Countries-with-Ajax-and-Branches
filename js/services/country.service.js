@@ -2,14 +2,21 @@
 
 var gCache = loadFromLocalStorage('cache') || {}
 
-function getCountryByName(term) {
-    if(gCache[term]) return Promise.resolve(gCache[term])
+function getCountryBy(type, term) {
+    if (gCache[term]) return Promise.resolve(gCache[term])
 
-    return fetch(`https://restcountries.com/v3.1/name/${term}`)
+    const endpoints = _getEndpoints(term)
+
+    return fetch(endpoints[type])
         .then(res => res.json())
         .then(countries => countries[0])
         .then(country => _saveToCache(term, country))
         .catch(err => console.log('Could not get country', err))
+}
+
+function removeCache() {
+    gCache = {}
+    localStorage.removeItem('cache')
 }
 
 function _saveToCache(term, country) {
@@ -18,16 +25,9 @@ function _saveToCache(term, country) {
     return country
 }
 
-function removeCache() {
-    gCache = {}
-    localStorage.removeItem('cache')
-}
-
-function loadFromLocalStorage(key) {
-    const val = localStorage.getItem(key)
-    return JSON.parse(val)
-}
-
-function saveToLocalStorage(key, value) {
-    localStorage.setItem(key, JSON.stringify(value))
+function _getEndpoints(term) {
+    return {
+        name: `https://restcountries.com/v3.1/name/${term}`,
+        code: `https://restcountries.com/v3.1/alpha/${term}`
+    }
 }
