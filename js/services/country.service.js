@@ -1,6 +1,6 @@
 'use strict'
 
-const gCache = loadFromLocalStorage('cache') || {}
+var gCache = loadFromLocalStorage('cache') || {}
 
 function getCountryByName(term) {
     if(gCache[term]) return Promise.resolve(gCache[term])
@@ -16,6 +16,11 @@ function _saveToCache(term, country) {
     gCache[term] = country
     saveToLocalStorage('cache', gCache)
     return country
+}
+
+function removeCache() {
+    gCache = {}
+    localStorage.removeItem('cache')
 }
 
 function loadFromLocalStorage(key) {

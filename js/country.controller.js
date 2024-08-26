@@ -24,6 +24,11 @@ function renderCountry(country) {
     setTimeout(window.scrollTo({ top: document.body.scrollHeight }), 500)
 }
 
+function onRemoveCache() {
+    if(!confirm('Are you sure?')) return
+    removeCache()
+}
+
 function showLoader() {
     document.querySelector('.loader').hidden = false
 }
