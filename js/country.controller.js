@@ -11,15 +11,20 @@ function onSearch(ev) {
 }
 
 function renderCountry(country) {
-    console.log('country:', country)
+    const { common: countryName } = country.name
+    const [lat, lng] = country.latlng
+
     const borderList = country.borders?.map(border => `<li onclick="onGetCountryByCode('${border}')">${border}</li>`).join('') || 'None'
     const strHTML = `
-        <h2 class="name">${country.name.common}</h2>
+        <h2 class="name">${countryName}</h2>
         <img class="flag-img" src="${country.flags.png}" alt="">
 
         <p class="flag-description">${country.flags.alt}</p>
         <p class="population">Population: ${country.population}</p>
         <p class="area">Area: ${country.area}</p>
+        <a href="https://www.google.com/maps/place/${countryName}/@${lat},${lng},7z/">
+            Click to view ${countryName} on Google Maps!
+        </a>
 
         <h2>Neighboring countries</h2>
             <ul class="neighbor-list">
