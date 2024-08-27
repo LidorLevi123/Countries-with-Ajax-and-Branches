@@ -10,10 +10,6 @@
         left: 4rem;
     }
 
-    .app-header .hero h1 {
-        font-size: 3rem;
-    }
-
     .country-preview {
         grid-template-columns: 1fr 1fr;
     }
@@ -23,9 +19,5 @@
     .main-layout {
         grid-template-columns:
             minmax(20px, 1fr) minmax(auto, 1200px) minmax(20px, 1fr);
-    }
-
-    .app-header .hero h1 {
-        font-size: 4vw;
     }
 }

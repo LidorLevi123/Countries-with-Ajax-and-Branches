@@ -35,7 +35,7 @@
 
 .app-header .hero h1 {
     font-family: 'Lato', 'Roboto', 'Helvetica Neue', sans-serif;
-    font-size: 2rem;
+    font-size: clamp(2rem, 4vw, 7rem);
     font-weight: 700;
     text-shadow: 1px 1px 1px white;
     color: #ccf3ff;
