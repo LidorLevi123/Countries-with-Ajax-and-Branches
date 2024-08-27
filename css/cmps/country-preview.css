@@ -23,6 +23,8 @@
 }
 
 .country-preview .btn-search-more {
+    display: block;
+    margin-block-start: 16px;
     font-size: 1.3em;
     padding: 0.8em;
     background: rgb(85, 138, 199);

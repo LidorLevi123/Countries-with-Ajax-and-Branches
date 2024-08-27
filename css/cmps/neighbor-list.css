@@ -1,15 +1,16 @@
 .neighbor-list {
     display: grid;
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 1.5rem;
     list-style-type: none;
+    padding: 2rem;
 }
 
 .neighbor-list li{
     display: flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: space-between;
     cursor: pointer;
-    width: max-content;
     color: purple;
 }
 

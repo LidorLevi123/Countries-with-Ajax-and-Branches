@@ -8,15 +8,18 @@ function onSearch(ev) {
     getCountryBy('name', value)
         .then(renderCountry)
         .then(hideLoader)
+        .then(() => { window.scrollTo({ top: document.body.scrollHeight }) })
 }
 
 function renderCountry(country) {
+    console.log('country', country)
     const { common: countryName } = country.name
     const [lat, lng] = country.latlng
 
     const borderList = country.borders?.map(border => `
         <li onclick="onGetCountryByCode('${border}')">
-            🌍 ${border}
+            <span>🌍</span>
+            <span>${border}</span>
             <img src="https://flagsapi.com/${border}/flat/64.png">
         </li>`).join('') || 'None'
     const strHTML = `
@@ -29,7 +32,6 @@ function renderCountry(country) {
             <ul class="neighbor-list">
                 ${borderList}
             </ul>
-            <button class="btn-search-more" onclick="onScrollToTop()">Search more countries! 👆</button>
         </section>
 
         <section>
@@ -39,11 +41,11 @@ function renderCountry(country) {
             <a href="https://www.google.com/maps/place/${countryName}/@${lat},${lng},7z/">
                 Click to view ${countryName} on Google Maps!
             </a>
+            <button class="btn-search-more" onclick="onScrollToTop()">Search more countries! 👆</button>
         </section>`
 
     const elCountry = document.querySelector('.country-preview')
     elCountry.innerHTML = strHTML
-    setTimeout(() => window.scrollTo({ top: document.body.scrollHeight }), 200)
 }
 
 function onGetCountryByCode(code) {
